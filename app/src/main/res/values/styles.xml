@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.PenguinPay.TextInput" parent="">
+        <item name="android:textSize">@dimen/text_size_default</item>
+    </style>
+
+    <style name="TextAppearance.PenguinPay.Title" parent="">
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <style name="Widget.PenguinPay.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/button_text_state_color</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="cornerRadius">@dimen/default_dimen</item>
+        <item name="rippleColor">@color/primaryLightColor</item>
+    </style>
+
+    <style name="Widget.PenguinPay.Button.Light">
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/textLightColor</item>
+        <item name="android:padding">12dp</item>
+        <item name="cornerRadius">@dimen/default_dimen</item>
+        <item name="rippleColor">@color/white</item>
+    </style>
+
+    <style name="Widget.PenguinPay.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/text_size_default</item>
+        <item name="android:inputType">textCapWords</item>
+    </style>
+
+    <style name="Widget.PenguinPay.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:background">@color/windowBackgroundColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.PenguinPay.Title</item>
+        <item name="titleTextColor">@color/primaryLightColor</item>
+    </style>
+
+    <style name="ThemeOverlay.PenguinPay.RoundedImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/default_dimen</item>
+        <item name="backgroundColor">@android:color/transparent</item>
+    </style>
+
+</resources>

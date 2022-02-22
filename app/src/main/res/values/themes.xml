@@ -1,0 +1,12 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.PenguinPay" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:statusBarColor">@color/windowBackgroundColor</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="toolbarStyle">@style/Widget.PenguinPay.Toolbar</item>
+    </style>
+</resources>

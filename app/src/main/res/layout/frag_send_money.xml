@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.samfonsec.penguinpay.ui.sendMoney.SendMoneyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackgroundColor"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.PenguinPay.Toolbar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tvLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_dimen"
+            android:text="@string/label_send_money_to"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+        <TextView
+            android:id="@+id/tvRecipientName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x_small_dimen"
+            android:textAlignment="center"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabel"
+            tools:text="Neymar Junior" />
+
+        <TextView
+            android:id="@+id/tvRecipientCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/primaryDarkColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRecipientName"
+            tools:text="Uganda" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_dimen"
+            app:cardCornerRadius="@dimen/default_dimen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRecipientCountry"
+            app:layout_constraintVertical_bias="0.1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_dimen">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiSend"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_dimen"
+                    android:hint="@string/hint_send"
+                    app:expandedHintEnabled="false"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:prefixText="@string/prefix_currency"
+                    app:prefixTextAppearance="@style/TextAppearance.PenguinPay.TextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSend"
+                        style="@style/Widget.PenguinPay.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:digits="01"
+                        android:hint="@string/hint_zero"
+                        android:inputType="number"
+                        android:text="@={vm.sendMoney.send}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tvLabelReceive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/big_dimen"
+                    android:text="@string/label_receive"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@id/tiSend" />
+
+                <TextView
+                    android:id="@+id/tvReceive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/x_small_dimen"
+                    android:text="@{vm.sendMoney.receive}"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="@dimen/text_size_medium"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/tvLabelReceive"
+                    tools:text="1100110100101010" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btSend"
+                    style="@style/Widget.PenguinPay.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/big_dimen"
+                    android:layout_marginBottom="@dimen/small_dimen"
+                    android:enabled="@{vm.sendMoney.isValid}"
+                    android:text="@string/action_send"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvReceive" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/small_dimen"
+            android:text="@string/label_error"
+            android:textAlignment="center"
+            app:drawableTopCompat="@drawable/ic_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btTryAgain"
+            style="@style/Widget.PenguinPay.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_dimen"
+            android:paddingHorizontal="@dimen/big_dimen"
+            android:text="@string/action_try_again"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toEndOf="@id/tvError"
+            app:layout_constraintStart_toStartOf="@id/tvError"
+            app:layout_constraintTop_toBottomOf="@id/tvError" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gpError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="btTryAgain,tvError" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/primaryColor"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
